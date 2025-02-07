@@ -20,7 +20,15 @@ async function getProduct(id: string): Promise<Product> {
   return res.json();
 }
 
-export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+// Update the type definition for the page props
+type Props = {
+  params: {
+    id: string
+  }
+}
+
+// Update your component definition
+export default async function ProductDetail({ params }: Props) {
   const product = await getProduct(params.id);
   return <ProductDetailClient product={product} />;
 }

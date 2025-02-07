@@ -9,7 +9,8 @@ export default function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [avatar, setAvatar] = useState('https://picsum.photos/800');
+  // Remove setAvatar if not used
+  const [avatar] = useState<string>('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {

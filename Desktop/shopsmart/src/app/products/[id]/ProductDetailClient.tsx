@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
+import Image from 'next/image';
 
 interface Product {
   id: number;
@@ -47,9 +48,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-4">
           <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg shadow-lg">
-            <img
+            <Image
               src={product.images[selectedImage] || 'https://via.placeholder.com/600'}
               alt={product.title}
+              width={600}
+              height={400}
               className="w-full h-96 object-cover transform transition-transform duration-500 hover:scale-105"
             />
           </div>
@@ -60,7 +63,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 onClick={() => setSelectedImage(index)}
                 className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 transition-all duration-200 transform hover:scale-105 ${selectedImage === index ? 'border-blue-500 scale-105' : 'border-transparent'}`}
               >
-                <img src={image} alt={`${product.title} ${index + 1}`} className="w-full h-full object-cover" />
+                <Image
+                  src={image}
+                  alt={`${product.title} ${index + 1}`}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover"
+                />
               </button>
             ))}
           </div>

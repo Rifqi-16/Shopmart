@@ -3,6 +3,7 @@
 import { useCartStore } from '@/store/cartStore';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function CartPage() {
   const router = useRouter();
@@ -39,9 +40,11 @@ export default function CartPage() {
               key={item.id}
               className="flex flex-col sm:flex-row items-center gap-4 bg-white dark:bg-gray-700 p-4 rounded-lg mb-4"
             >
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
+                width={96}
+                height={96}
                 className="w-24 h-24 object-cover rounded-md"
               />
               <div className="flex-grow">

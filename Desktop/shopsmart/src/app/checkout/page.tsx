@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
+import Image from 'next/image';
 
 interface ShippingInfo {
   fullName: string;
@@ -16,7 +17,6 @@ interface ShippingInfo {
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, clearCart } = useCartStore();
-  const [step, setStep] = useState(1);
   const [shippingInfo, setShippingInfo] = useState<ShippingInfo>({
     fullName: '',
     email: '',
@@ -38,11 +38,7 @@ export default function CheckoutPage() {
     setShippingInfo(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsProcessing(true);
-    setError('');
-
+  const handleSubmit = async () => {
     try {
       // Simulate order processing
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -50,7 +46,7 @@ export default function CheckoutPage() {
       // Clear cart and show success
       clearCart();
       router.push('/checkout/success');
-    } catch (err) {
+    } catch (error) {
       setError('An error occurred while processing your order. Please try again.');
     } finally {
       setIsProcessing(false);
@@ -91,9 +87,11 @@ export default function CheckoutPage() {
           <div className="space-y-4">
             {items.map((item) => (
               <div key={item.id} className="flex items-center space-x-4">
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
+                  width={64}
+                  height={64}
                   className="w-16 h-16 object-cover rounded"
                 />
                 <div className="flex-1">

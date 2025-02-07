@@ -23,8 +23,9 @@ export default function CheckoutSuccessPage() {
         <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
           Order Confirmed!
         </h1>
+        <p>We&apos;ll send you confirmation email</p>
         <p className="text-gray-600 dark:text-gray-400 mb-8">
-          Thank you for your purchase. We'll send you an email with your order details shortly.
+          Thank you for your purchase. We&apos;ll send you an email with your order details shortly.
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
           You will be redirected to the homepage in a few seconds...
