@@ -2,8 +2,8 @@
 const nextConfig = {
   images: {
     domains: ['api.escuelajs.co', 'via.placeholder.com'],
-  },
-  output: 'standalone'
+    unoptimized: true
+  }
 };
 
 module.exports = nextConfig;
